@@ -1,0 +1,9 @@
+{
+  "page": {
+    "login": {
+      "notHaveAnAccountYet": "まだアカウントをお持ちではありませんか？",
+      "forgotPassword": "パスワードを忘れましたか？",
+      "createNewAccount": "アカウントの新規作成"
+    }
+  }
+}

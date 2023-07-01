@@ -1,0 +1,11 @@
+{
+  "action": {
+    "submit": "送信",
+    "back": "戻る",
+    "cancel": "キャンセル",
+    "login": "ログイン",
+    "inputField": "{{field}}を入力",
+    "submitField": "{{field}}を送信",
+    "doAction": "{{action}}をする"
+  }
+}

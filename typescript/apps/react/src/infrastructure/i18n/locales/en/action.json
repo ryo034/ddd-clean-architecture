@@ -1,0 +1,11 @@
+{
+  "action": {
+    "submit": "submit",
+    "back": "back",
+    "cancel": "cancel",
+    "login": "login",
+    "inputField": "input {{field}}",
+    "submitField": "submit {{field}}",
+    "doAction": "{{action}}"
+  }
+}

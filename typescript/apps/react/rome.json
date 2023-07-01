@@ -1,0 +1,54 @@
+{
+  "files": {
+    "ignore": [
+      "dist",
+      "lib",
+      "build",
+      "generated",
+      "storybook-static",
+      "coverage",
+      ".turbo",
+      "node_modules",
+      ".next",
+      "*.log",
+      "*.d.ts",
+      "assets",
+      "static"
+    ]
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "all": true,
+      "suspicious": {
+        "noExplicitAny": "off"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off"
+      },
+      "style": {
+        "noParameterProperties": "off"
+      },
+      "nursery": {
+        "noBannedTypes": "off",
+        "useExhaustiveDependencies": "off"
+      }
+    }
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentSize": 2,
+    "lineWidth": 120
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded",
+      "trailingComma": "none"
+    }
+  }
+}

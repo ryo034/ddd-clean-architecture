@@ -1,0 +1,9 @@
+{
+  "page": {
+    "login": {
+      "notHaveAnAccountYet": "Don't have an account yet ?",
+      "forgotPassword": "Forgot Password ?",
+      "createNewAccount": "Create New Account"
+    }
+  }
+}
