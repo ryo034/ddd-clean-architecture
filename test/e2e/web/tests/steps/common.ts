@@ -16,7 +16,7 @@ export default class PagesStep {
 
   @Step("ログイン画面を開く")
   async goToLoginPage() {
-    await page.goto(`${homeURL}/login`);
+    await page.goto(`${homeURL}`);
   }
 
   @Step("画面を更新する")

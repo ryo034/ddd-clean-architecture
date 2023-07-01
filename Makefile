@@ -15,7 +15,7 @@ stop:
 
 .PHONY: start
 start:
-	@docker-compose up -d firebase
+	@docker-compose up -d
 
 .PHONY: restart
 restart:

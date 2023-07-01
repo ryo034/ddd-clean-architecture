@@ -18,10 +18,7 @@ export default class FormStep {
 	}
 
 	@Step("入力欄<label>のエラーメッセージ<message>が表示されている")
-	async isVisibleEmailErrorMessage(
-		label: string,
-		message: string,
-	) {
+	async isVisibleEmailErrorMessage(label: string, message: string) {
 		const target = page.getByLabel(label, { exact: true });
 		await target.waitFor();
 		const id = await target.getAttribute("id");

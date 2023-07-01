@@ -14,7 +14,7 @@ export const firebaseApiKey = process.env.FIREBASE_API_KEY || 'mock'
 export const firebaseAuthDomain = process.env.FIREBASE_AUTH_DOMAIN|| 'localhost'
 export const firebaseProjectId = process.env.FIREBASE_PROJECT_ID || 'test'
 export const firebaseMessagingSenderId = process.env.FIREBASE_MESSAGING_SENDER_ID || '691918257784'
-export const firebaseAppId = process.env.FIREBASE_APP_ID || '1:691918257784:web:2fade763b8dd8db725b78d'
+export const firebaseAppId = process.env.FIREBASE_APP_ID || 'test'
 
 export const firebaseConfig = {
 	apiKey: firebaseApiKey,

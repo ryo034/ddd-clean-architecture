@@ -3,7 +3,7 @@ services:
   db_write:
     image: mysql:8.0.32
     platform: linux/x86_64
-    container_name: main-db-write
+    container_name: db-write
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: main
@@ -17,7 +17,7 @@ services:
     ports:
       - "3308:3306"
     healthcheck:
-      test: mysqladmin ping -h main-db-write -P 3306 -u root -proot
+      test: mysqladmin ping -h db-write -P 3306 -u root -proot
       interval: 10s
       timeout: 10s
       retries: 3
@@ -26,7 +26,7 @@ services:
   db_read:
     image: mysql:8.0.32
     platform: linux/x86_64
-    container_name: main-db-read
+    container_name: db-read
     depends_on:
       - db_write
     environment:
