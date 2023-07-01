@@ -3,7 +3,8 @@
     "login": {
       "notHaveAnAccountYet": "Don't have an account yet ?",
       "forgotPassword": "Forgot Password ?",
-      "createNewAccount": "Create New Account"
+      "createNewAccount": "Create New Account",
+      "signInYourAccount": "Sign in to your account"
     }
   }
 }

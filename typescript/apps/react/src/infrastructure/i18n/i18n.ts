@@ -52,25 +52,15 @@ export const i18nRootKeys = {
 
 export const i18nKeys = {
   word: {
-    setting: `${i18nRootKeys.word}.setting`,
-    resetting: `${i18nRootKeys.word}.resetting`,
     password: `${i18nRootKeys.word}.password`,
-    email: `${i18nRootKeys.word}.email`,
-    phoneNumber: `${i18nRootKeys.word}.phoneNumber`,
-    phoneNumberNoHyphen: `${i18nRootKeys.word}.phoneNumberNoHyphen`,
-    authCode: `${i18nRootKeys.word}.authCode`,
-    sixDigitNumber: `${i18nRootKeys.word}.sixDigitNumber`,
-    lendingManagement: `${i18nRootKeys.word}.lendingManagement`,
-    materialManagement: `${i18nRootKeys.word}.materialManagement`,
-    members: `${i18nRootKeys.word}.members`,
-    employees: `${i18nRootKeys.word}.employees`,
-    reference: `${i18nRootKeys.word}.reference`
+    email: `${i18nRootKeys.word}.email`
   },
   action: {
     submit: `${i18nRootKeys.action}.submit`,
     back: `${i18nRootKeys.action}.back`,
     cancel: `${i18nRootKeys.action}.cancel`,
     login: `${i18nRootKeys.action}.login`,
+    signUp: `${i18nRootKeys.action}.signUp`,
     logout: `${i18nRootKeys.action}.logout`,
     inputField: `${i18nRootKeys.action}.inputField`,
     doAction: `${i18nRootKeys.action}.doAction`
@@ -86,11 +76,8 @@ export const i18nKeys = {
     login: {
       forgotPassword: `${i18nRootKeys.page}.login.forgotPassword`,
       notHaveAnAccountYet: `${i18nRootKeys.page}.login.notHaveAnAccountYet`,
-      createNewAccount: `${i18nRootKeys.page}.login.createNewAccount`
-    },
-    mfaAuthenticateCode: {
-      verifyYourCode: `${i18nRootKeys.page}.mfaAuthenticateCode.verifyYourCode`,
-      completedSentMessage: `${i18nRootKeys.page}.mfaAuthenticateCode.completedSentMessage`
+      createNewAccount: `${i18nRootKeys.page}.login.createNewAccount`,
+      signInYourAccount: `${i18nRootKeys.page}.login.signInYourAccount`
     }
   }
 }
