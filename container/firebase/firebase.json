@@ -1,0 +1,19 @@
+{
+  "emulators": {
+    "ui": {
+      "enabled": true,
+      "host": "0.0.0.0",
+      "port": 4000
+    },
+    "logging": {
+      "host": "0.0.0.0",
+      "port": 4500
+    },
+    "auth": {
+      "host": "0.0.0.0",
+      "port": 9099
+    },
+    "singleProjectMode": true
+  },
+  "remoteconfig": {}
+}
