@@ -11,8 +11,8 @@ describe("AccountName", () => {
       result.mapErr((e) => expect(e).instanceOf(DomainError))
     })
 
-    it.each(["一郎", "いちろう", "イチロウ", "ichiroh"])(
-      "should create an instance of AccountName with valid input",
+    it.each(["一郎", "いちろう", "イチロウ", "ichiroh", "あい　う"])(
+      "should create an instance of AccountName with valid input '%s'",
       (actual) => {
         const result = AccountName.create(actual)
         expect(result.isOk).toBe(true)
@@ -24,12 +24,11 @@ describe("AccountName", () => {
       " ",
       "  ",
       "メールアドレス",
-      "あい　う",
       "&lt;&copy;&amp;",
       "㌶Ⅲ⑳㏾㈱髙﨑",
       "ヲンヰヱヴーヾ・",
       "ｧｰｭｿﾏﾞﾟ"
-    ])("should fail to create an instance of AccountName with empty input", (actual) => {
+    ])("should fail to create an instance of AccountName with empty input '%s'", (actual) => {
       const result = AccountName.create(actual)
       expect(result.isErr).toBe(true)
       result.mapErr((e) => expect(e).instanceOf(DomainError))

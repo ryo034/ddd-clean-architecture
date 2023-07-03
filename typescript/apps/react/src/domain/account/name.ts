@@ -6,8 +6,7 @@ export class AccountName extends ValueObject<string> {
   static pattern = /^[ぁ-んァ-ン一-龥a-zA-Z]+$/
   static max = 50
   static create(v: string): Result<AccountName, Error> {
-    // 半角スペースは除去
-    const trimmedName = v.replace(/\s+/g, "")
+    const trimmedName = v.replace(/[\s　]/g, '');
     if (trimmedName.length > this.max) {
       return Result.err(
         new DomainError({
