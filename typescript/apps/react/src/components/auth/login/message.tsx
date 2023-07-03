@@ -8,13 +8,13 @@ export const useLoginPageFormMessage = () => {
   return {
     forgotPassword: i18n.translate(`${i18nKeys.page.login.forgotPassword}`),
     notHaveAnAccountYet: i18n.translate(`${i18nKeys.page.login.notHaveAnAccountYet}`),
-    createNewAccount: i18n.translate(`${i18nKeys.page.login.createNewAccount}`),
     word: {
       password: i18n.translate(`${i18nKeys.word.password}`),
       email: i18n.translate(`${i18nKeys.word.email}`)
     },
     action: {
-      login: i18n.translate(`${i18nKeys.action.login}`)
+      login: i18n.translate(`${i18nKeys.action.login}`),
+      signUp: i18n.translate(`${i18nKeys.action.signUp}`)
     },
     form: {
       validation: {

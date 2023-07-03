@@ -17,7 +17,9 @@ export class MeInteractor implements MeUseCaseInput {
       return res.error
     }
     this.presenter.set(res.value)
-    if (res.value.notEmailVerified) {
+    this.trackingRepository.setUser(res.value)
+
+    if (res.value.emailNotVerified) {
       const sendEmailVerificationRes = await this.repository.sendEmailVerification()
       if (sendEmailVerificationRes.isErr) {
         return sendEmailVerificationRes.error

@@ -1,53 +1,49 @@
-import { useLoginPageFormMessage } from "./message"
-import { FC, useContext } from "react"
-import { useForm } from "react-hook-form"
+import { FC, useContext, useLayoutEffect, useRef, useState } from "react"
+import { SubmitHandler } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
 import sandboxImage from "~/assets/sandbox.png"
-import { FormPasswordInputSection } from "~/components/common/form/inputPassword"
-import { FormInputSection } from "~/components/common/form/inputSection"
-import { Button } from "~/components/ui/button"
-import { Email, Password } from "~/domain/shared"
+import { LoginFormValues, LoginPageForm } from "~/components/auth/login/form"
+import { errorMessageHandler } from "~/infrastructure/error/message"
 import { i18nKeys } from "~/infrastructure/i18n"
 import { ContainerContext } from "~/infrastructure/injector/context"
-
-export type LoginFormValues = {
-  email: string
-  password: string
-}
+import { accountInitialPagePath } from "~/infrastructure/route/router"
 
 export const LoginPage: FC = () => {
   const { store, controller, i18n } = useContext(ContainerContext)
   const isDark = store.theme((s) => s.isDark)
+  const me = store.me((state) => state.me)
+  const meRef = useRef(me)
+
+  const [errorMessage, setErrorMessage] = useState("")
 
   const onChangeTheme = () => {
     controller.theme.toggle(!isDark)
   }
 
-  const {
-    register,
-    formState: { errors }
-  } = useForm<LoginFormValues>()
+  const navigate = useNavigate()
 
-  const message = useLoginPageFormMessage()
+  useLayoutEffect(() => {
+    store.me.subscribe((state) => {
+      meRef.current = state.me
+    })
+  }, [])
 
-  const emailInputField = register("email", {
-    required: message.form.validation.email.required,
-    maxLength: {
-      value: Email.max,
-      message: message.form.validation.email.max
-    },
-    pattern: {
-      value: Email.pattern,
-      message: message.form.validation.email.regex
+  const onSubmit: SubmitHandler<LoginFormValues> = async (d) => {
+    const res = await controller.me.login(d.email, d.password)
+    if (res) {
+      setErrorMessage(errorMessageHandler(res))
+      return
     }
-  })
+    navigate(accountInitialPagePath)
+  }
 
-  const passwordInputField = register("password", {
-    required: message.form.validation.password.required,
-    pattern: {
-      value: Password.pattern,
-      message: message.form.validation.password.regex
-    }
-  })
+  const onClickGoToSignUpPage = () => {
+    console.log("onClickGoToSignUpPage")
+  }
+
+  const onClickForgotPassword = () => {
+    console.log("onClickForgotPassword")
+  }
 
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-background/95">
@@ -71,42 +67,12 @@ export const LoginPage: FC = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 {i18n.translate(i18nKeys.page.login.signInYourAccount)}
               </h1>
-              <form className="space-y-4 md:space-y-6" action="#">
-                <FormInputSection
-                  fullWidth
-                  title={i18n.translate(i18nKeys.word.email)}
-                  id="email"
-                  type="email"
-                  placeholder="name@company.com"
-                  autoComplete="email"
-                  reactHookForm={emailInputField}
-                  errorMessage={errors.email?.message ?? ""}
-                />
-                <FormPasswordInputSection
-                  fullWidth
-                  isCurrent
-                  title={i18n.translate(i18nKeys.word.password)}
-                  id="password"
-                  placeholder="••••••••"
-                  autoComplete="password"
-                  reactHookForm={passwordInputField}
-                  errorMessage={errors.password?.message ?? ""}
-                />
-                <div className="flex items-center justify-end">
-                  <a href="/" className="text-sm font-medium text-primary-600 hover:underline dark:text-gray-300">
-                    {i18n.translate(i18nKeys.page.login.forgotPassword)}
-                  </a>
-                </div>
-                <Button fullWidth type="submit" form="loginForm" data-testid="loginButton">
-                  {i18n.translate(i18nKeys.action.login)}
-                </Button>
-                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  {i18n.translate(i18nKeys.page.login.notHaveAnAccountYet)}{" "}
-                  <a href="/" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
-                    {i18n.translate(i18nKeys.action.signUp)}
-                  </a>
-                </p>
-              </form>
+              <LoginPageForm
+                onClickGoToSignUpPage={onClickGoToSignUpPage}
+                onClickForgotPassword={onClickForgotPassword}
+                onSubmit={onSubmit}
+                errorMessage={errorMessage}
+              />
             </div>
           </div>
         </div>

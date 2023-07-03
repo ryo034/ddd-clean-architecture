@@ -61,6 +61,7 @@ export const i18nKeys = {
     cancel: `${i18nRootKeys.action}.cancel`,
     login: `${i18nRootKeys.action}.login`,
     signUp: `${i18nRootKeys.action}.signUp`,
+    showItem: `${i18nRootKeys.action}.showItem`,
     logout: `${i18nRootKeys.action}.logout`,
     inputField: `${i18nRootKeys.action}.inputField`,
     doAction: `${i18nRootKeys.action}.doAction`

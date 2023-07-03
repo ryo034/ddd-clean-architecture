@@ -1,5 +1,6 @@
 import { FormErrorMessage } from "./errorMessage"
 import { FC, useState } from "react"
+import { usePasswordInputComponentMessage } from "~/components/common/form/message"
 import { CheckboxWithLabel } from "~/components/ui/checkbox"
 import { Input, InputProps } from "~/components/ui/input"
 import { Label } from "~/components/ui/label"
@@ -22,6 +23,7 @@ export const FormPasswordInputSection: FC<Props> = ({
   isCurrent = false,
   showToggle = true
 }) => {
+  const message = usePasswordInputComponentMessage()
   const [isRevealPassword, setIsRevealPassword] = useState(false)
   return (
     <div>
@@ -39,7 +41,7 @@ export const FormPasswordInputSection: FC<Props> = ({
           onClick={() => setIsRevealPassword(!isRevealPassword)}
           id={`${id}-togglePasswordVisibility`}
           data-testid={`${id}-togglePasswordVisibility`}
-          label="パスワードを表示"
+          label={message.action.showPassword}
         />
       )}
       <FormErrorMessage dataTestId={`${id}-errorMessage`} message={errorMessage} />

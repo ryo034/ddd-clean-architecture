@@ -6,6 +6,8 @@ import { TrackingLayout } from "~/layout/tracking"
 import { NotFoundPage } from "~/pages/error/notFound"
 import { LoginPage } from "~/pages/login"
 
+export const accountInitialPagePath = routeMap.account
+
 const router = createBrowserRouter([
   {
     path: "/",
