@@ -1,8 +1,11 @@
 import { FC, memo } from "react"
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { routeMap } from "~/infrastructure/route/path"
+import { AuthLayout } from "~/layout/auth"
+import { ProtectedLayout } from "~/layout/protected"
 import { ThemeLayout } from "~/layout/theme"
 import { TrackingLayout } from "~/layout/tracking"
+import { AccountPage } from "~/pages/account"
 import { NotFoundPage } from "~/pages/error/notFound"
 import { LoginPage } from "~/pages/login"
 
@@ -16,7 +19,16 @@ const router = createBrowserRouter([
       {
         element: <ThemeLayout />,
         children: [
-          { path: routeMap.login, element: <LoginPage /> },
+          {
+            element: <AuthLayout />,
+            children: [
+              { path: routeMap.login, element: <LoginPage /> },
+              {
+                element: <ProtectedLayout />,
+                children: [{ path: routeMap.account, element: <AccountPage /> }]
+              }
+            ]
+          },
           { path: "*", element: <NotFoundPage /> }
         ]
       }

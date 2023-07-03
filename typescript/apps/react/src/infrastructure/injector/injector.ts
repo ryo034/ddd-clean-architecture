@@ -3,7 +3,6 @@ import ga4 from "react-ga4"
 import { GoogleAnalyticsDriver } from "~/driver/analytics/ga/driver"
 import { SentryDriver } from "~/driver/analytics/sentry/driver"
 import { FirebaseDriver } from "~/driver/firebase/driver"
-import { MeDriver } from "~/driver/me/driver"
 import { ThemeDriver } from "~/driver/theme/driver"
 import { firebaseAuth } from "~/infrastructure/firebase"
 import { ReactI18nextProvider } from "~/infrastructure/i18n"
@@ -34,7 +33,7 @@ const setupDriverAdapter = () => {
 
 const _driverAdapter = setupDriverAdapter()
 
-const apiClient = axios.create()
+const _apiClient = axios.create()
 
 const setupDriver = () => {
   const firebase = new FirebaseDriver(firebaseAuth)
@@ -42,8 +41,7 @@ const setupDriver = () => {
     firebase,
     sentry: new SentryDriver(),
     ga: new GoogleAnalyticsDriver(ga4),
-    theme: new ThemeDriver(localStorage),
-    me: new MeDriver(apiClient)
+    theme: new ThemeDriver(localStorage)
   }
 }
 
@@ -59,7 +57,7 @@ const gatewayAdapter = setupGatewayAdapter()
 
 const setupGateway = () => {
   return {
-    me: new MeGateway(driver.me, driver.firebase, gatewayAdapter.me),
+    me: new MeGateway(driver.firebase, gatewayAdapter.me),
     tracking: new TrackingGateway(driver.ga)
   }
 }

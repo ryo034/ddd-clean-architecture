@@ -1,4 +1,12 @@
-import { Auth, User, UserCredential, sendEmailVerification, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import {
+  Auth,
+  User,
+  UserCredential,
+  reload,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+  signOut
+} from "firebase/auth"
 import { Result } from "true-myth"
 import { Email } from "~/domain/shared"
 import { Password } from "~/domain/shared"
@@ -32,6 +40,18 @@ export class FirebaseDriver {
     }
     try {
       await sendEmailVerification(this.client.currentUser)
+      return Result.ok(null)
+    } catch (e) {
+      return Result.err(ErrorHandler.adapt(e))
+    }
+  }
+
+  async reload(): PromiseResult<null, Error> {
+    try {
+      if (this.currentUser === null) {
+        return Result.err(new FirebaseCurrentUserNotFoundError("currentUser is null"))
+      }
+      await reload(this.currentUser)
       return Result.ok(null)
     } catch (e) {
       return Result.err(ErrorHandler.adapt(e))

@@ -20,4 +20,12 @@ export class MeController {
   async signOut(): Promise<null | Error> {
     return await this.useCase.signOut()
   }
+
+  async find(): Promise<null | Error> {
+    return await this.useCase.find()
+  }
+
+  async checkEmailVerified(): Promise<null | Error> {
+    return await this.useCase.checkEmailVerified()
+  }
 }

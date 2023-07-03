@@ -1,47 +1,5 @@
 version: "3.9"
 services:
-  db_write:
-    image: mysql:8.0.32
-    platform: linux/x86_64
-    container_name: db-write
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: main
-      MYSQL_USER: docker
-      MYSQL_PASSWORD: docker
-      TZ: "UTC"
-    volumes:
-      - ./container/database/mysql/write/.data:/var/lib/mysql
-      - ./container/database/mysql/write/my.cnf:/etc/mysql/conf.d/my.cnf
-      - ./container/database/mysql/write/999-setting.sql:/docker-entrypoint-initdb.d/999-setting.sql
-    ports:
-      - "3308:3306"
-    healthcheck:
-      test: mysqladmin ping -h db-write -P 3306 -u root -proot
-      interval: 10s
-      timeout: 10s
-      retries: 3
-      start_period: 30s
-
-  db_read:
-    image: mysql:8.0.32
-    platform: linux/x86_64
-    container_name: db-read
-    depends_on:
-      - db_write
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: main
-      MYSQL_USER: docker
-      MYSQL_PASSWORD: docker
-      TZ: "UTC"
-    volumes:
-      - ./container/database/mysql/read/.data:/var/lib/mysql
-      - ./container/database/mysql/read/my.cnf:/etc/mysql/conf.d/my.cnf
-      - ./container/database/mysql/read/999-setting.sql:/docker-entrypoint-initdb.d/999-setting.sql
-    ports:
-      - "3309:3306"
-
   firebase:
     container_name: firebase
     env_file: .env

@@ -4,11 +4,6 @@ export const isLocal = env === 'localhost'
 export const homeURL = process.env.HOME_URL || 'http://localhost:5173'
 export const initializeData = process.env.DO_INITIALIZE_DATA || "false"
 export const rootPath = initializeData === "true" && env !== 'localhost' ? "./e2e" : "."
-export const dbUser = process.env.DB_USER || 'docker'
-export const dbHost = process.env.DB_HOST || 'localhost'
-export const dbDatabase = process.env.DB_DATABASE || 'main'
-export const dbPassword = process.env.DB_PASSWORD || 'docker'
-export const dbPort = process.env.DB_PORT || '3308'
 
 export const firebaseApiKey = process.env.FIREBASE_API_KEY || 'mock'
 export const firebaseAuthDomain = process.env.FIREBASE_AUTH_DOMAIN|| 'localhost'
@@ -23,11 +18,3 @@ export const firebaseConfig = {
 	messagingSenderId: firebaseMessagingSenderId,
 	appId: firebaseAppId,
 };
-
-export const dbConfig = {
-	host: dbHost,
-	port: parseInt(dbPort),
-	user: dbUser,
-	password: dbPassword,
-	database: dbDatabase
-}

@@ -46,11 +46,21 @@ export class MeInteractor implements MeUseCaseInput {
     return null
   }
 
+  async checkEmailVerified(): Promise<Error | null> {
+    const res = await this.repository.reloadAuth()
+    if (res.isErr) {
+      return res.error
+    }
+    this.presenter.set(res.value)
+    return null
+  }
+
   async find(): Promise<Error | null> {
     const res = await this.repository.find()
     if (res.isErr) {
       return res.error
     }
+    console.log(res.value)
     this.presenter.set(res.value)
     const setUserRes = this.trackingRepository.setUser(res.value)
     if (setUserRes.isErr) {
