@@ -5,10 +5,6 @@ import { isHeadless } from "./config";
 export let context: BrowserContext;
 export let page: Page;
 
-export function setNewPage(p: Page) {
-	page = p;
-}
-
 export class Browser {
 	@BeforeSpec()
 	public async beforeSpec() {
@@ -26,7 +22,6 @@ export class Browser {
 
 	@AfterSpec()
 	public async afterSpec() {
-		// 実行時間を計測した処理
 		const start: number = DataStoreFactory.getSpecDataStore().get("startTime");
 		const end = Date.now();
 		console.log(
