@@ -26,8 +26,10 @@ export const FormPasswordInputSection: FC<Props> = ({
   const message = usePasswordInputComponentMessage()
   const [isRevealPassword, setIsRevealPassword] = useState(false)
   return (
-    <div>
-      <Label id={id} title={title} />
+    <div className="space-y-2">
+      <Label htmlFor={id} title={title}>
+        {title}
+      </Label>
       <Input
         fullWidth={fullWidth}
         id={id}

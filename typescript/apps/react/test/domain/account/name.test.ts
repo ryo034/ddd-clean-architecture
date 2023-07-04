@@ -19,19 +19,13 @@ describe("AccountName", () => {
       }
     )
 
-    it.each([
-      "",
-      " ",
-      "  ",
-      "メールアドレス",
-      "&lt;&copy;&amp;",
-      "㌶Ⅲ⑳㏾㈱髙﨑",
-      "ヲンヰヱヴーヾ・",
-      "ｧｰｭｿﾏﾞﾟ"
-    ])("should fail to create an instance of AccountName with empty input '%s'", (actual) => {
-      const result = AccountName.create(actual)
-      expect(result.isErr).toBe(true)
-      result.mapErr((e) => expect(e).instanceOf(DomainError))
-    })
+    it.each(["", " ", "  ", "メールアドレス", "&lt;&copy;&amp;", "㌶Ⅲ⑳㏾㈱髙﨑", "ヲンヰヱヴーヾ・", "ｧｰｭｿﾏﾞﾟ"])(
+      "should fail to create an instance of AccountName with empty input '%s'",
+      (actual) => {
+        const result = AccountName.create(actual)
+        expect(result.isErr).toBe(true)
+        result.mapErr((e) => expect(e).instanceOf(DomainError))
+      }
+    )
   })
 })

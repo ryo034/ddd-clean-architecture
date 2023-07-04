@@ -31,8 +31,10 @@ export const FormInputSection: FC<Props> = ({
   rootClass
 }) => {
   return (
-    <div className={rootClass?.join(" ")}>
-      <Label id={id} title={title} className={showLabel ? "" : "sr-only"} />
+    <div className={`space-y-2 ${rootClass?.join(" ")}`}>
+      <Label htmlFor={id} title={title} className={showLabel ? "" : "sr-only"}>
+        {title}
+      </Label>
       {!(suffixElm && prefixElm) ? (
         <Input
           className={customClass ? customClass.join(" ") : ""}

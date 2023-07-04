@@ -40,7 +40,7 @@ export default class PagesStep {
 
   @Step("エラーメッセージ<errorMessage>が表示されている")
   async isVisibleErrorMessage(errorMessage: string) {
-    const target = page.locator(".errorMessage").getByText(errorMessage);
+    const target = page.getByTestId("resultError").getByText(errorMessage);
     await target.waitFor();
     expect(await target.isVisible()).toBeTruthy();
   }

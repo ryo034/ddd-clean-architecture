@@ -7,13 +7,13 @@ import { clearFirebase, setupFirebase } from "./firebase";
 export default class SetupAndTearDown {
 	@BeforeScenario({ tags: ["statefulAll"] })
 	async beforeScenarioStatefulAll() {
-		await Promise.all([clearFirebase()]);
-		await Promise.all([setupFirebase()]);
+		await clearFirebase();
+		await setupFirebase();
 	}
 
 	@AfterScenario({ tags: ["statefulAll"] })
 	async afterScenario() {
-		await Promise.all([clearFirebase()]);
-		await Promise.all([setupFirebase()]);
+		await clearFirebase();
+		await setupFirebase();
 	}
 }

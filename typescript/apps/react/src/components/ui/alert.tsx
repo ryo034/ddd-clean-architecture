@@ -3,17 +3,18 @@ import { type VariantProps, cva } from "class-variance-authority"
 import { HTMLAttributes, forwardRef } from "react"
 import { HiExclamationCircle, HiExclamationTriangle, HiInformationCircle } from "react-icons/hi2"
 
+// TODO: dark mode
 const variants = cva(
   "relative w-full rounded-lg border p-4 [&>svg]:absolute [&>svg]:text-foreground [&>svg]:left-4 [&>svg]:top-4 [&>svg+div]:translate-y-[-3px] [&:has(svg)]:pl-11",
   {
     variants: {
       variant: {
         default:
-          "border-gray-300 text-gray-800 bg-gray-50 [&>svg]:text-gray-800 dark:text-gray-400 dark:border-gray-800 dark:bg-gray-800",
+          "border-gray-300 text-gray-800 bg-gray-50 [&>svg]:text-gray-800 dark:text-white dark:border-gray-400 dark:bg-transparent dark:[&>svg]:text-white",
         destructive:
-          "border-red-300 text-red-800 bg-red-50 [&>svg]:text-red-800 dark:text-red-400 dark:border-red-800 dark:bg-red-800",
+          "border-red-300 text-red-800 bg-red-50 [&>svg]:text-red-800 dark:text-white dark:border-red-800 dark:bg-transparent dark:[&>svg]:text-white",
         warning:
-          "border-yellow-300 text-yellow-800 bg-yellow-50 [&>svg]:text-yellow-800 dark:text-yellow-400 dark:border-yellow-800 dark:bg-yellow-800"
+          "border-yellow-300 text-yellow-800 bg-yellow-50 [&>svg]:text-yellow-800 dark:text-white dark:border-yellow-800 dark:bg-transparent dark:[&>svg]:text-white"
       }
     },
     defaultVariants: {
