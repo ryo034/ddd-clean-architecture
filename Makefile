@@ -12,7 +12,6 @@ init:
 	@make init-react
 	@make init-e2e
 	@echo "Success!🎉"
-	@echo "Please run 'make start'"
 
 .PHONY: stop
 stop:
