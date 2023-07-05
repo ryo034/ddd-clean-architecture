@@ -59,7 +59,7 @@ $ npm install
 # Setup
 Initialization is done using `make`. Only the command is mentioned here, so please refer to the `Makefile` if you want to know more details.
 
-1. initialize
+1. Initialize
 ```bash
 $ make init
 ```
