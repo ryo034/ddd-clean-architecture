@@ -1,6 +1,0 @@
-export { NDCCodes } from "~/domain/shared/classification/ndcCodes"
-export { NDCName } from "~/domain/shared/classification/ndc/name"
-export { NDCCode } from "~/domain/shared/classification/ndc/code"
-export { NDCEdition } from "~/domain/shared/classification/ndc/edition"
-export { NDC } from "~/domain/shared/classification/ndc/ndc"
-export { NDCs } from "~/domain/shared/classification/ndc/ndcs"
