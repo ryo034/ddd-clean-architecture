@@ -60,7 +60,6 @@ export class MeInteractor implements MeUseCaseInput {
     if (res.isErr) {
       return res.error
     }
-    console.log(res.value)
     this.presenter.set(res.value)
     const setUserRes = this.trackingRepository.setUser(res.value)
     if (setUserRes.isErr) {
