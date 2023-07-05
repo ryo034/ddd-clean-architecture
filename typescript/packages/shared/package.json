@@ -1,0 +1,25 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc -p . --declaration && tsc-alias -p tsconfig.json",
+    "test": "vitest run --reporter verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "clsx": "^1.2.1",
+    "firebase": "^9.23.0",
+    "tailwind-merge": "^1.13.2",
+    "true-myth": "^6.2.0",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.3",
+    "tsc-alias": "^1.8.7",
+    "vitest": "^0.32.4"
+  }
+}
