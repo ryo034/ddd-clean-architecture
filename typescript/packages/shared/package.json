@@ -1,10 +1,11 @@
 {
   "name": "shared",
-  "version": "1.0.0",
-  "description": "",
-  "main": "./dist/index.js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "build": "tsc -p . --declaration && tsc-alias -p tsconfig.json",
+    "build": "tsc && vite build",
+    "build-local": "tsc && vite build --mode development",
     "test": "vitest run --reporter verbose"
   },
   "keywords": [],
@@ -20,6 +21,18 @@
   "devDependencies": {
     "@types/node": "^20.3.3",
     "tsc-alias": "^1.8.7",
+    "vite": "^4.4.0",
     "vitest": "^0.32.4"
+  },
+  "types": "./dist/types/index.d.ts",
+  "files": ["/dist"],
+  "main": "./dist/shared.umd.js",
+  "module": "./dist/shared.es.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/shared.es.js",
+      "require": "./dist/shared.umd.js"
+    }
   }
 }

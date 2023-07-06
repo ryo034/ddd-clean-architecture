@@ -6,8 +6,7 @@ import { FormInputSection } from "~/components/common/form/inputSection"
 import { Button } from "~/components/ui/button"
 import { FormResultErrorMessage } from "~/components/ui/form"
 import { Text } from "~/components/ui/text"
-import { Email } from "~/domain/shared"
-import { Password } from "~/domain/shared"
+import { Email, Password } from "shared"
 
 export type LoginFormValues = {
   email: string

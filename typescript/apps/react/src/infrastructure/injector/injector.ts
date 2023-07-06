@@ -2,21 +2,12 @@ import axios from "axios"
 import ga4 from "react-ga4"
 import { GoogleAnalyticsDriver } from "~/driver/analytics/ga/driver"
 import { SentryDriver } from "~/driver/analytics/sentry/driver"
-import { FirebaseDriver } from "~/driver/firebase/driver"
-import { ThemeDriver } from "~/driver/theme/driver"
-import { firebaseAuth } from "~/infrastructure/firebase"
-import { ReactI18nextProvider } from "~/infrastructure/i18n"
-import { MeController } from "~/interface/controller/me/controller"
-import { ThemeController } from "~/interface/controller/theme/controller"
-import { MeGatewayAdapter } from "~/interface/gateway/me/adapter"
-import { MeGateway } from "~/interface/gateway/me/gateway"
-import { TrackingGateway } from "~/interface/gateway/tracking/gateway"
 import { MePresenter } from "~/interface/presenter/me/presenter"
-import { ThemePresenter } from "~/interface/presenter/theme/presenter"
 import { meStore } from "~/store/me/store"
+import { ReactI18nextProvider } from "~/infrastructure/i18n"
+import { ThemePresenter } from "~/interface/presenter/theme/presenter"
 import { themeStore } from "~/store/theme/store"
-import { MeInteractor } from "~/usecase/me/interactor"
-import { ThemeInteractor } from "~/usecase/theme/interactor"
+import { firebaseAuth, FirebaseDriver, MeController, MeGateway, MeGatewayAdapter, MeInteractor, ThemeController, ThemeDriver, ThemeInteractor } from "shared"
 
 const setupStore = () => {
   return {
@@ -58,7 +49,6 @@ const gatewayAdapter = setupGatewayAdapter()
 const setupGateway = () => {
   return {
     me: new MeGateway(driver.firebase, gatewayAdapter.me),
-    tracking: new TrackingGateway(driver.ga)
   }
 }
 const gateway = setupGateway()
@@ -75,7 +65,7 @@ const presenter = setupPresenter()
 const setupUseCase = () => {
   return {
     theme: new ThemeInteractor(driver.theme, presenter.theme),
-    me: new MeInteractor(gateway.me, gateway.tracking, presenter.me)
+    me: new MeInteractor(gateway.me, presenter.me)
   }
 }
 const useCase = setupUseCase()

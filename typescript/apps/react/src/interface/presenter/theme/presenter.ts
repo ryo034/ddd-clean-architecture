@@ -1,5 +1,5 @@
 import { ThemeStoreType } from "~/store/theme/store"
-import { ThemeUseCaseOutput } from "~/usecase/theme/output"
+import { ThemeUseCaseOutput } from "shared"
 
 export class ThemePresenter implements ThemeUseCaseOutput {
   constructor(private readonly themeStore: ThemeStoreType) {}

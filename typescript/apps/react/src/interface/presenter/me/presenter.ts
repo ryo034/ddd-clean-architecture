@@ -1,6 +1,5 @@
-import { Me } from "~/domain/me"
+import { Me, MeUseCaseOutput } from "shared"
 import { MeStoreType } from "~/store/me/store"
-import { MeUseCaseOutput } from "~/usecase/me/output"
 
 export class MePresenter implements MeUseCaseOutput {
   constructor(private readonly meStore: MeStoreType) {}

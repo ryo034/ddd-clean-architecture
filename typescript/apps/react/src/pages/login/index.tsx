@@ -1,13 +1,14 @@
 import { FC, useContext, useLayoutEffect, useRef, useState } from "react"
 import { SubmitHandler } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
+import { errorMessageHandler } from "shared"
 import { LoginFormValues, LoginPageForm } from "~/components/auth/login/form"
-import { errorMessageHandler } from "~/infrastructure/error/message"
 import { i18nKeys } from "~/infrastructure/i18n"
 import { ContainerContext } from "~/infrastructure/injector/context"
 import { accountInitialPagePath } from "~/infrastructure/route/router"
 
 export const LoginPage: FC = () => {
+  // console.log('process.env.VITE_FIREBASE_API_KEY', process.env.VITE_FIREBASE_API_KEY);
   const { store, controller, i18n } = useContext(ContainerContext)
   const me = store.me((state) => state.me)
   const meRef = useRef(me)

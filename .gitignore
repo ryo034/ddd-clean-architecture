@@ -24,6 +24,9 @@ logs
 *.dll
 .data
 
+node_modules
+dist
+
 # sensitive information
 *.key
 *.pem
@@ -47,3 +50,5 @@ Thumbs.db
 /vendor
 /.venv
 /.gradle
+
+.env.*

@@ -1,4 +1,4 @@
-import { ThemeDriver } from "../../driver/theme/driver"
+import { ThemeDriver } from "../../driver"
 import { ThemeUseCaseInput } from "./input"
 import { ThemeUseCaseOutput } from "./output"
 

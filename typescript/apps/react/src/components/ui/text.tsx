@@ -1,4 +1,4 @@
-import { cn } from "@/infrastructure/tailwindcss"
+import { cn } from "shared"
 import { Slot } from "@radix-ui/react-slot"
 import { type VariantProps, cva } from "class-variance-authority"
 import { HTMLAttributes, forwardRef } from "react"

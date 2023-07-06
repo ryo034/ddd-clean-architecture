@@ -1,6 +1,6 @@
 import { AlertTitle, AlertWithIcon } from "./alert"
 import { Label } from "@/components/ui/label"
-import { cn } from "@/infrastructure/tailwindcss"
+import { cn } from "shared"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
 import { ComponentPropsWithoutRef, ElementRef, HTMLAttributes, createContext, forwardRef, useContext } from "react"

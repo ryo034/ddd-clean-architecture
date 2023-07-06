@@ -1,7 +1,6 @@
 import { setUser } from "@sentry/react"
+import { ErrorHandler, Me } from "shared"
 import { Result } from "true-myth"
-import { Me } from "~/domain/me"
-import { ErrorHandler } from "~/infrastructure/error/handler"
 
 export class SentryDriver {
   setUser(me: Me): Result<null, Error> {
@@ -9,7 +8,7 @@ export class SentryDriver {
       setUser({
         id: me.user.id.value.asString,
         email: me.user.email.value,
-        username: me.user.name
+        username: me.user.name.value
       })
       return Result.ok(null)
     } catch (e) {

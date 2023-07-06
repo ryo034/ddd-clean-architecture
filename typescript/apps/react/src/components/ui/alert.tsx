@@ -1,4 +1,4 @@
-import { cn } from "@/infrastructure/tailwindcss"
+import { cn } from "shared"
 import { type VariantProps, cva } from "class-variance-authority"
 import { HTMLAttributes, forwardRef } from "react"
 import { HiExclamationCircle, HiExclamationTriangle, HiInformationCircle } from "react-icons/hi2"

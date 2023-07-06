@@ -1,7 +1,7 @@
 import { FC, useContext, useLayoutEffect, useRef } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
-import { firebaseAuth } from "~/infrastructure/firebase"
+import { firebaseAuth } from "shared"
 import { ContainerContext } from "~/infrastructure/injector/context"
 import { routeMap, unauthenticatedRoutes, unprotectedInitialPagePath } from "~/infrastructure/route/path"
 

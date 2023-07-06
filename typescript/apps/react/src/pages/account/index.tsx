@@ -1,10 +1,10 @@
 import { LogOut } from "lucide-react"
 import { FC, useContext } from "react"
+import { cn } from "shared"
 import { Button } from "~/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "~/components/ui/card"
 import { useToast } from "~/components/ui/use-toast"
 import { ContainerContext } from "~/infrastructure/injector/context"
-import { cn } from "~/infrastructure/tailwindcss"
 
 export const AccountPage: FC = () => {
   const { controller, store } = useContext(ContainerContext)

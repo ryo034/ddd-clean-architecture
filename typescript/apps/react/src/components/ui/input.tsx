@@ -1,4 +1,4 @@
-import { cn } from "@/infrastructure/tailwindcss"
+import { cn } from "shared"
 import { InputHTMLAttributes, forwardRef } from "react"
 import { UseFormRegisterReturn } from "react-hook-form"
 

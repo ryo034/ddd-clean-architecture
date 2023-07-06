@@ -1,8 +1,0 @@
-export { AbstractEntity } from "~/domain/shared/abstractEntity"
-export { ValueObject } from "~/domain/shared/valueObject"
-export { StringId } from "~/domain/shared/stringId"
-export { Entity } from "~/domain/shared/entity"
-export { Entities } from "~/domain/shared/entities"
-export { DomainError, domainKeys } from "~/domain/shared/error"
-export { Email } from "~/domain/shared/email"
-export { Password } from "~/domain/shared/password"

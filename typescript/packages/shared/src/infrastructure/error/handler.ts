@@ -12,11 +12,11 @@ export class ErrorHandler extends Error {
       // ここでログが出力されてない場合はadapterのエラーの可能性が高い
       console.error(err)
     }
-    let isCaptureError = false
+    // let isCaptureError = false
     let error: Error
     if (err instanceof FirebaseError) {
       error = FirebaseErrorAdapter.create(err)
-      isCaptureError = true
+      // isCaptureError = true
     } else if (err instanceof DomainError) {
       error = err
     } else if (err instanceof Error) {
