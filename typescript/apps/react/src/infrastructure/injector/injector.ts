@@ -1,4 +1,3 @@
-import axios from "axios"
 import ga4 from "react-ga4"
 import { GoogleAnalyticsDriver } from "~/driver/analytics/ga/driver"
 import { SentryDriver } from "~/driver/analytics/sentry/driver"
@@ -18,21 +17,14 @@ const setupStore = () => {
 
 const store = setupStore()
 
-const setupDriverAdapter = () => {
-  return {}
-}
-
-const _driverAdapter = setupDriverAdapter()
-
-const _apiClient = axios.create()
-
+const ls = localStorage
 const setupDriver = () => {
   const firebase = new FirebaseDriver(firebaseAuth)
   return {
     firebase,
     sentry: new SentryDriver(),
     ga: new GoogleAnalyticsDriver(ga4),
-    theme: new ThemeDriver(localStorage)
+    theme: new ThemeDriver(ls)
   }
 }
 
