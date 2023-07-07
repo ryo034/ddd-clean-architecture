@@ -6,9 +6,15 @@ init-e2e:
 init-react:
 	@cp ./typescript/apps/react/.env.local.sample ./typescript/apps/react/.env.local
 
+.PHONY: init-shared-package
+init-shared-package:
+	@cp ./typescript/packages/shared/sample.env.development ./typescript/packages/shared/.env.development
+	@cd ./typescript/packages/shared && pnpm install && pnpm build
+
 .PHONY: init
 init:
 	@cp .env.sample .env
+	@make init-shared-package
 	@make init-react
 	@make init-e2e
 	@echo "Success!🎉"
