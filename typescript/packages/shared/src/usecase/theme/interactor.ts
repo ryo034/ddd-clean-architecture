@@ -11,9 +11,8 @@ export class ThemeInteractor implements ThemeUseCaseInput {
     return null
   }
 
-  get(): boolean {
+  get(): void {
     const isDark = this.driver.get()
     this.presenter.set(isDark)
-    return isDark
   }
 }
