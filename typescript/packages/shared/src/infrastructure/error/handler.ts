@@ -16,7 +16,6 @@ export class ErrorHandler extends Error {
     let error: Error
     if (err instanceof FirebaseError) {
       error = FirebaseErrorAdapter.create(err)
-      // isCaptureError = true
     } else if (err instanceof DomainError) {
       error = err
     } else if (err instanceof Error) {
@@ -28,10 +27,6 @@ export class ErrorHandler extends Error {
     } else {
       error = new UnknownError("unknown error")
     }
-
-    // if (isCaptureError) {
-    //   captureException(err, {})
-    // }
 
     if (EnvHandler.isLocal()) {
       console.error(error)

@@ -13,7 +13,6 @@ export {
   FirebaseAuthIdTokenExpiredError,
   FirebaseAuthIdTokenRevokedError,
   FirebaseAuthUnverifiedEmailError,
-  FirebaseAuthMultiFactorAuthRequiredError,
   FirebaseAuthInternalError,
   FirebaseErrorAdapter
 } from './firebase'

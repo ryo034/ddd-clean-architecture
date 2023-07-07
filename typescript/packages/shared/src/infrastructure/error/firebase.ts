@@ -1,7 +1,6 @@
 import { InternalServerError } from "./network"
 import { HttpStatusCode } from "./statusCode"
 import { FirebaseError } from "firebase/app"
-import { MultiFactorError } from "firebase/auth"
 
 export class FirebaseCustomError extends Error {
   constructor(message: string) {
@@ -26,20 +25,6 @@ export class FirebaseAuthEmailAlreadyInUseError extends FirebaseCustomError {}
 export class FirebaseAuthIdTokenExpiredError extends FirebaseCustomError {}
 export class FirebaseAuthIdTokenRevokedError extends FirebaseCustomError {}
 export class FirebaseAuthUnverifiedEmailError extends FirebaseCustomError {}
-export class FirebaseAuthMultiFactorAuthRequiredError extends FirebaseCustomError {
-  error: MultiFactorError
-  constructor(err: MultiFactorError) {
-    super(err.message)
-    Object.setPrototypeOf(this, new.target.prototype)
-    this.name = Error.name
-    this.error = err
-  }
-
-  get getError(): MultiFactorError {
-    return this.error
-  }
-}
-
 export class FirebaseAuthInternalError extends FirebaseCustomError {}
 
 const firebaseErrorCode = {
@@ -76,8 +61,6 @@ export class FirebaseErrorAdapter {
         return new FirebaseAuthIdTokenRevokedError("id token revoked")
       case firebaseErrorCode.unverifiedEmail:
         return new FirebaseAuthUnverifiedEmailError("unverified email")
-      case firebaseErrorCode.multiFactorAuthRequired:
-        return new FirebaseAuthMultiFactorAuthRequiredError(err as MultiFactorError)
       default:
         return new InternalServerError(HttpStatusCode.INTERNAL_SERVER_ERROR, "Internal Server Error")
     }
