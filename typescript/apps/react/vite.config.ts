@@ -21,8 +21,10 @@ export default ({ mode }: { mode: Mode }) => {
             })
         ],
         output: {
+          // By splitting frequently updated code (for example, the application code you wrote yourself) and less frequently updated code (such as code from external libraries or frameworks), the browser can cache and reuse the less frequently updated code.
           manualChunks: {
-            vendor: ["react", "react-router-dom", "react-dom"]
+            vendor: ["react", "react-router-dom", "react-dom"],
+            libs: ['axios', 'i18next', 'class-variance-authority', 'clsx', 'immer', 'zustand', 'true-myth'],
           }
         }
       }
