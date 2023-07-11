@@ -1,5 +1,4 @@
 export * from "./env"
 export * from "./error"
-export * from "./firebase"
 export * from "./shared"
 export * from "./tailwindcss"
