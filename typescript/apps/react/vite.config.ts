@@ -2,6 +2,7 @@ import terser from "@rollup/plugin-terser"
 import react from "@vitejs/plugin-react"
 import { visualizer } from "rollup-plugin-visualizer"
 import { defineConfig, loadEnv } from "vite"
+import viteCompression from "vite-plugin-compression"
 
 type Mode = "development" | "production" | "analyze"
 
@@ -10,6 +11,7 @@ export default ({ mode }: { mode: Mode }) => {
 
   return defineConfig({
     build: {
+      minify: mode === "production",
       rollupOptions: {
         plugins: [
           mode === "analyze" &&
@@ -21,10 +23,23 @@ export default ({ mode }: { mode: Mode }) => {
             })
         ],
         output: {
-          // By splitting frequently updated code (for example, the application code you wrote yourself) and less frequently updated code (such as code from external libraries or frameworks), the browser can cache and reuse the less frequently updated code.
           manualChunks: {
-            vendor: ["react", "react-router-dom", "react-dom"],
-            libs: ['axios', 'i18next', 'class-variance-authority', 'clsx', 'immer', 'zustand', 'true-myth'],
+            react: ["react", "react-dom", "react-hook-form", "react-i18next", "react-icons"],
+            firebase: ["firebase/app", "react-firebase-hooks/auth"],
+            router: ["react-router-dom"],
+            i18n: ["i18next"],
+            axios: ["axios"],
+            utility: ["clsx", "immer", "true-myth", "class-variance-authority"],
+            state: ["zustand"],
+            validation: ["zod"],
+            tracking: ["@sentry/react", "react-ga4"],
+            radix: [
+              "@radix-ui/react-checkbox",
+              "@radix-ui/react-label",
+              "@radix-ui/react-slot",
+              "@radix-ui/react-switch",
+              "@radix-ui/react-toast"
+            ]
           }
         }
       }
@@ -36,32 +51,13 @@ export default ({ mode }: { mode: Mode }) => {
       }
     },
     plugins: [
+      viteCompression(),
       react(),
       terser({
         compress: {
           drop_console: true
         }
-      }),
-      visualizer()
+      })
     ]
   })
 }
-
-// // https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [
-//     react(),
-//     terser({
-//       compress: {
-//         drop_console: true
-//       }
-//     }),
-//     visualizer(),
-//   ],
-//   resolve: {
-//     alias: {
-//       "@/": `${__dirname}/src/`,
-//       "~/": `${__dirname}/src/`
-//     }
-//   }
-// })
