@@ -19,18 +19,21 @@
     "typescript": "^5.1.6"
   },
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.3",
     "@types/node": "^20.3.3",
     "tsc-alias": "^1.8.7",
     "vite": "^4.4.0",
     "vitest": "^0.32.4"
   },
-  "types": "./dist/types/index.d.ts",
-  "files": ["/dist"],
+  "types": "./dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "main": "./dist/shared.umd.js",
   "module": "./dist/shared.es.js",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/shared.es.js",
       "require": "./dist/shared.umd.js"
     }
