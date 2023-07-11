@@ -1,12 +1,23 @@
+import { MessageProvider } from "../error/message"
+import { firebaseAuth } from "../firebase"
 import ga4 from "react-ga4"
+import {
+  MeController,
+  MeGateway,
+  MeGatewayAdapter,
+  MeInteractor,
+  ThemeController,
+  ThemeDriver,
+  ThemeInteractor
+} from "shared"
 import { GoogleAnalyticsDriver } from "~/driver/analytics/ga/driver"
 import { SentryDriver } from "~/driver/analytics/sentry/driver"
-import { MePresenter } from "~/interface/presenter/me/presenter"
-import { meStore } from "~/store/me/store"
+import { FirebaseDriver } from "~/driver/firebase"
 import { ReactI18nextProvider } from "~/infrastructure/i18n"
+import { MePresenter } from "~/interface/presenter/me/presenter"
 import { ThemePresenter } from "~/interface/presenter/theme/presenter"
+import { meStore } from "~/store/me/store"
 import { themeStore } from "~/store/theme/store"
-import { firebaseAuth, FirebaseDriver, MeController, MeGateway, MeGatewayAdapter, MeInteractor, ThemeController, ThemeDriver, ThemeInteractor } from "shared"
 
 const setupStore = () => {
   return {
@@ -40,7 +51,7 @@ const gatewayAdapter = setupGatewayAdapter()
 
 const setupGateway = () => {
   return {
-    me: new MeGateway(driver.firebase, gatewayAdapter.me),
+    me: new MeGateway(driver.firebase, gatewayAdapter.me)
   }
 }
 const gateway = setupGateway()
@@ -71,13 +82,15 @@ const setupController = () => {
 const controller = setupController()
 
 const i18n = new ReactI18nextProvider()
+const errorMessageProvider = new MessageProvider(i18n)
 
 export const di = {
   driver,
   store,
   gateway,
   controller,
-  i18n
+  i18n,
+  errorMessageProvider
 }
 
 export type DI = typeof di

@@ -1,24 +1,6 @@
 export { AdapterError } from './adapter'
 export { AuthBaseError } from './auth'
 export {
-  FirebaseCustomError,
-  FirebaseCurrentUserNotFoundError,
-  FirebaseNotFoundCurrentLibraryIdInCustomClaims,
-  FirebaseAuthMissingEmail,
-  FirebaseAuthUserNotFoundError,
-  FirebaseAuthInvalidPhoneNumberError,
-  FirebaseAuthWrongPasswordError,
-  FirebaseAuthInvalidPasswordError,
-  FirebaseAuthEmailAlreadyInUseError,
-  FirebaseAuthIdTokenExpiredError,
-  FirebaseAuthIdTokenRevokedError,
-  FirebaseAuthUnverifiedEmailError,
-  FirebaseAuthInternalError,
-  FirebaseErrorAdapter
-} from './firebase'
-export { UnknownError, ErrorHandler } from './handler'
-export { errorMessageHandler } from './message'
-export {
   NetworkBaseError,
   CannotConnectNetworkError,
   BadRequestError,
@@ -32,3 +14,18 @@ export {
   InvalidAddressError
 } from './network'
 export { HttpStatusCode } from './statusCode'
+export {
+  AuthProviderCustomError,
+  AuthProviderCurrentUserNotFoundError,
+  AuthProviderNotFoundCurrentLibraryIdInCustomClaims,
+  AuthProviderMissingEmail,
+  AuthProviderUserNotFoundError,
+  AuthProviderInvalidPhoneNumberError,
+  AuthProviderWrongPasswordError,
+  AuthProviderInvalidPasswordError,
+  AuthProviderEmailAlreadyInUseError,
+  AuthProviderIdTokenExpiredError,
+  AuthProviderIdTokenRevokedError,
+  AuthProviderUnverifiedEmailError,
+  AuthProviderInternalError,
+} from './authProvider'

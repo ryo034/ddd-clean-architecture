@@ -1,7 +1,7 @@
-import { cn } from "shared"
 import { type VariantProps, cva } from "class-variance-authority"
 import { HTMLAttributes, forwardRef } from "react"
 import { HiExclamationCircle, HiExclamationTriangle, HiInformationCircle } from "react-icons/hi2"
+import { cn } from "shared"
 
 // TODO: dark mode
 const variants = cva(

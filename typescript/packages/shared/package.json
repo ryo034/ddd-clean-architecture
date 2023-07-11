@@ -13,7 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "clsx": "^1.2.1",
-    "firebase": "^9.23.0",
     "tailwind-merge": "^1.13.2",
     "true-myth": "^6.2.0",
     "typescript": "^5.1.6"

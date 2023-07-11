@@ -53,7 +53,10 @@ export const i18nRootKeys = {
 export const i18nKeys = {
   word: {
     password: `${i18nRootKeys.word}.password`,
-    email: `${i18nRootKeys.word}.email`
+    email: `${i18nRootKeys.word}.email`,
+    error: {
+      unknown: `${i18nRootKeys.word}.error.unknown`
+    }
   },
   action: {
     submit: `${i18nRootKeys.action}.submit`,

@@ -28,7 +28,7 @@ describe("LoginForm", () => {
   let onClickForgotPassword: MouseEventHandler<HTMLParagraphElement>
 
   beforeEach(() => {
-    import.meta.env.VITE_FIREBASE_API_KEY = 'mock'
+    import.meta.env.VITE_FIREBASE_API_KEY = "mock"
 
     mockOnSubmit = vi.fn()
     onClickGoToSignUpPage = vi.fn()

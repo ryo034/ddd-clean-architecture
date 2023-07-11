@@ -1,6 +1,7 @@
-import { ErrorHandler, Me } from "shared"
+import { Me } from "shared"
 import { Result } from "true-myth"
 import { MyCustomGA } from "~/infrastructure/analytics/ga"
+import { ErrorHandler } from "~/infrastructure/error/handler"
 
 export class GoogleAnalyticsDriver {
   constructor(private readonly client: MyCustomGA) {}

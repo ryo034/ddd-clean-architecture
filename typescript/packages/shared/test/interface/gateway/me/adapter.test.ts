@@ -14,7 +14,7 @@ describe("MeGatewayAdapter", () => {
       email: "test@example.com",
       emailVerified: true,
     }
-    const result = adapter.adaptFirebaseUser(actual)
+    const result = adapter.adaptAuthProviderUser(actual)
     const expected = Me.create({
       user: User.create({
         id: new AccountId(new StringId("uid")),

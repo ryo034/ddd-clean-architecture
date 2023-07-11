@@ -1,8 +1,6 @@
-import { AdapterError } from "./adapter"
 import { FirebaseErrorAdapter } from "./firebase"
 import { FirebaseError } from "firebase/app"
-import { DomainError } from "../../domain/shared"
-import { EnvHandler } from "../../infrastructure/env/handler"
+import { AdapterError, DomainError, EnvHandler } from "shared"
 
 export class UnknownError extends Error {}
 

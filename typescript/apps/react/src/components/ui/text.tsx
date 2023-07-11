@@ -1,7 +1,7 @@
-import { cn } from "shared"
 import { Slot } from "@radix-ui/react-slot"
 import { type VariantProps, cva } from "class-variance-authority"
 import { HTMLAttributes, forwardRef } from "react"
+import { cn } from "shared"
 
 const variables = cva("text-sm font-light text-gray-500 dark:text-gray-400", {
   variants: {

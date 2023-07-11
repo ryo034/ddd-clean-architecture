@@ -1,12 +1,12 @@
 import { FC, MouseEventHandler, useEffect } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
+import { Email, Password } from "shared"
 import { useLoginPageFormMessage } from "~/components/auth/login/message"
 import { FormPasswordInputSection } from "~/components/common/form/inputPassword"
 import { FormInputSection } from "~/components/common/form/inputSection"
 import { Button } from "~/components/ui/button"
 import { FormResultErrorMessage } from "~/components/ui/form"
 import { Text } from "~/components/ui/text"
-import { Email, Password } from "shared"
 
 export type LoginFormValues = {
   email: string

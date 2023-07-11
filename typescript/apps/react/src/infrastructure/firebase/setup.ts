@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app"
 import { connectAuthEmulator, getAuth } from "firebase/auth"
 import { connectStorageEmulator, getStorage } from "firebase/storage"
-import { EnvHandler } from "../env/handler"
+import { EnvHandler } from "shared"
 
 export const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,

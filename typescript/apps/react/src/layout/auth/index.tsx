@@ -1,7 +1,7 @@
 import { FC, useContext, useLayoutEffect, useRef } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
-import { firebaseAuth } from "shared"
+import { firebaseAuth } from "~/infrastructure/firebase"
 import { ContainerContext } from "~/infrastructure/injector/context"
 import { routeMap, unauthenticatedRoutes, unprotectedInitialPagePath } from "~/infrastructure/route/path"
 
@@ -34,7 +34,7 @@ export const AuthLayout: FC<Props> = () => {
       }
     })
 
-    const unsubscribed = driver.firebase.getClient.onAuthStateChanged(async (user) => {
+    const unsubscribed = firebaseAuth.onAuthStateChanged(async (user) => {
       if (user === null) {
         if (isAuthenticatedRoute) {
           navigate(location)

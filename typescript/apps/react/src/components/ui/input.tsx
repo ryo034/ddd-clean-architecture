@@ -1,6 +1,6 @@
-import { cn } from "shared"
 import { InputHTMLAttributes, forwardRef } from "react"
 import { UseFormRegisterReturn } from "react-hook-form"
+import { cn } from "shared"
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id?: string

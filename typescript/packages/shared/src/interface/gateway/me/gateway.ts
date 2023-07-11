@@ -3,23 +3,23 @@ import { Me } from "../../../domain/me"
 import { MeRepository } from "../../../domain/me"
 import { Email } from "../../../domain/shared"
 import { Password } from "../../../domain/shared"
-import { FirebaseDriver } from "../../../driver/firebase/driver"
-import { FirebaseCurrentUserNotFoundError } from "../../../infrastructure/error/firebase"
 import { PromiseResult } from "../../../infrastructure/shared/result"
 import { MeGatewayAdapter } from "../../../interface/gateway/me/adapter"
+import { AuthProviderCurrentUserNotFoundError } from "../../../infrastructure"
+import { AuthProviderDriver } from "../../../driver"
 
 export class MeGateway implements MeRepository {
-  constructor(private readonly fbDriver: FirebaseDriver, private readonly adapter: MeGatewayAdapter) {}
+  constructor(private readonly apDriver: AuthProviderDriver, private readonly adapter: MeGatewayAdapter) {}
 
   async login(): PromiseResult<Me, Error> {
-    if (this.fbDriver.currentUser === null) {
+    if (this.apDriver.currentUser === null) {
       return Result.err(new Error("user is not logged in"))
     }
-    return this.adapter.adaptFirebaseUser(this.fbDriver.currentUser)
+    return this.adapter.adaptAuthProviderUser(this.apDriver.currentUser)
   }
 
   async sendEmailVerification(): PromiseResult<null, Error> {
-    const res = await this.fbDriver.sendEmailVerification()
+    const res = await this.apDriver.sendEmailVerification()
     if (res.isErr) {
       return Result.err(res.error)
     }
@@ -27,20 +27,20 @@ export class MeGateway implements MeRepository {
   }
 
   async signOut(): PromiseResult<null, Error> {
-    return this.fbDriver.signOut()
+    return this.apDriver.signOut()
   }
 
   async reloadAuth(): PromiseResult<Me, Error> {
-    await this.fbDriver.reload()
-    const cu = this.fbDriver.currentUser
+    await this.apDriver.reload()
+    const cu = this.apDriver.currentUser
     if (cu === null) {
-      return Result.err(new FirebaseCurrentUserNotFoundError("currentUser is null"))
+      return Result.err(new AuthProviderCurrentUserNotFoundError("currentUser is null"))
     }
-    return this.adapter.adaptFirebaseUser(cu)
+    return this.adapter.adaptAuthProviderUser(cu)
   }
 
   async signInWithEmailAndPassword(email: Email, password: Password): PromiseResult<null, Error> {
-    const res = await this.fbDriver.signInWithEmailAndPassword(email, password)
+    const res = await this.apDriver.signInWithEmailAndPassword(email, password)
     if (res.isErr) {
       return Result.err(res.error)
     }
@@ -48,9 +48,9 @@ export class MeGateway implements MeRepository {
   }
 
   async find(): PromiseResult<Me, Error> {
-    if (this.fbDriver.currentUser === null) {
+    if (this.apDriver.currentUser === null) {
       return Result.err(new Error("user is not logged in"))
     }
-    return this.adapter.adaptFirebaseUser(this.fbDriver.currentUser)
+    return this.adapter.adaptAuthProviderUser(this.apDriver.currentUser)
   }
 }
