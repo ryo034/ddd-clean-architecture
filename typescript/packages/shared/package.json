@@ -12,17 +12,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "clsx": "^1.2.1",
-    "tailwind-merge": "^1.13.2",
-    "true-myth": "^6.2.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^1.14.0",
+    "true-myth": "^7.0.1",
     "typescript": "^5.1.6"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.3",
-    "@types/node": "^20.3.3",
+    "@types/node": "^20.4.5",
     "tsc-alias": "^1.8.7",
-    "vite": "^4.4.0",
-    "vitest": "^0.32.4"
+    "vite": "^4.4.7",
+    "vitest": "^0.33.0"
   },
   "types": "./dist/index.d.ts",
   "files": [
